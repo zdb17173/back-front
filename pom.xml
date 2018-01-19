@@ -8,6 +8,7 @@
     <artifactId>back-front</artifactId>
     <version>1.0</version>
     <modules>
+        <module>front</module>
         <module>back-springboot</module>
         <module>front-springboot</module>
     </modules>
