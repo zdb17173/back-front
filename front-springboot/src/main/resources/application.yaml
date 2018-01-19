@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+zuul:
+  routes:
+    page: /page/**
+    back:
+      url: http://127.0.0.1:8080/
+      path: /back/**
+    mapi:
+      url: https://mapi.cgtn.com/mobileapp
+      path: /mapi/**
+
+
+ribbon:
+  eureka:
+    enabled: false

@@ -1,0 +1,46 @@
+
+server:
+  port: 8080
+  context-path: /
+  tomcat:
+    accesslog:
+      directory: /opt/logs/
+      prefix: acesslog
+      suffix: .log
+
+spring:
+  http:
+    multipart:
+      file-size-threshold: 0
+      max-file-size: 1024MB
+      max-request-size: 1048MB
+
+swagger:
+  host: localhost:8080
+  apiInfo:
+    title: api title
+    description: api description
+    serviceTerms: My Apps API terms of service
+    license: Apache License Version 2.0
+    licenseUrl: https://github.com/springfox/springfox/blob/master/LICENSE
+    version: version
+    contact:
+      name: fran
+      url: zhang.dongbo@cgtn.com
+      email: zhang.dongbo@cgtn.com
+      
+cors:
+  configs:
+    /api/**:
+      allowCredentials: false
+      allowedOrigins:
+        - '*'
+      allowedMethods:
+        - POST
+        - GET
+        - HEAD
+        - OPTIONS
+
+logging:
+    config: classpath:log4j2.xml
+
