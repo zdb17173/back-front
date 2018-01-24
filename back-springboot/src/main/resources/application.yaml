@@ -42,5 +42,6 @@ cors:
         - OPTIONS
 
 logging:
-    config: classpath:log4j2.xml
+    config: classpath:logback.xml
+    #config: classpath:log4j2.xml
 

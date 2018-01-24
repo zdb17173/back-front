@@ -11,6 +11,8 @@ import javax.annotation.Resource;
 
 import org.fran.back.springboot.vo.JsonResult;
 import org.fran.back.springboot.vo.RemoveConfigParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,10 +21,12 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/test")
 public class TestRestController {
-	
-	@PostMapping(value = "/firstTest", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+
+	static Logger log = LoggerFactory.getLogger(TestRestController.class);
+
+	@PostMapping(value = "/selectString", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public JsonResult<String> firstTest(@RequestBody RemoveConfigParam baseParam){
-		
+		log.info("firstTest");
 		JsonResult<String> res = new JsonResult<>();
 		res.setData("dsadsad");
 		res.setDescription("sahdjhsajdhjsahdjsajdjh");
@@ -30,8 +34,11 @@ public class TestRestController {
 		return res;
 	}
 	
-	@GetMapping(value = "/selectAll", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.ALL_VALUE)
+	@GetMapping(value = "/selectList", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.ALL_VALUE)
 	public JsonResult<List<String>> selectTest(@RequestParam(name="id") int ids){
+		log.info("selectAll ids:["+ ids +"]");
+		if(ids == 5)
+			throw new RuntimeException("error!!!!");
 
 		JsonResult<List<String>> res = new JsonResult<>();
 		res.setData(new ArrayList<String>(){

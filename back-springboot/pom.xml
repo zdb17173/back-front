@@ -27,9 +27,12 @@
         <org.springframework.boot.version>1.5.9.RELEASE</org.springframework.boot.version>
 
         <commons.io.version>2.5</commons.io.version>
+        <slf4j.version>1.7.23</slf4j.version>
     </properties>
 
     <dependencies>
+
+
 
         <!--<dependency>
             <groupId>commons-io</groupId>
@@ -75,7 +78,22 @@
             <version>${org.springframework.boot.version}</version>
         </dependency>
 
+        <!-- 使用logback -->
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${org.springframework.boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+
+        <!-- 使用log4j2 -->
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <exclusions>
@@ -91,7 +109,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
             <version>${org.springframework.boot.version}</version>
-        </dependency>
+        </dependency>-->
 
 
         <dependency>

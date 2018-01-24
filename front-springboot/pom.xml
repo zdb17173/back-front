@@ -22,6 +22,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${org.springframework.boot.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zuul</artifactId>
             <version>${org.springframework.cloud.zuul}</version>
@@ -42,7 +48,7 @@
 
     <build>
         <!-- 修改此处记得需要清空 target目录，此处如果打开则程序配置无法读取，需要在java环境启动需要将resources部分注释掉 -->
-        <resources>
+        <!--<resources>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
                 <targetPath>${project.build.directory}/config</targetPath>
@@ -64,7 +70,7 @@
                     <include>**/*</include>
                 </includes>
             </resource>
-        </resources>
+        </resources>-->
 
         <!-- 打包命令 mvn package -->
         <plugins>
