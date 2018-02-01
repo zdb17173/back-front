@@ -1,7 +1,6 @@
 package org.fran.front.springboot.controller;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
-import org.fran.front.springboot.vo.ErrorType;
 import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.boot.autoconfigure.web.ErrorAttributes;
 import org.springframework.boot.autoconfigure.web.ErrorProperties;

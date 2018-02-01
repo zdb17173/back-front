@@ -1,13 +1,18 @@
 server:
   port: 8081
+  session:
+    timeout: 1
 
 zuul:
+  #addHostHeader: true
+  ignoredHeaders:
+  sensitiveHeaders:
   routes:
     back:
       url: http://127.0.0.1:8080/
       path: /back/**
     mapi:
-      url: https://mapi.cgtn.com/mobileapp
+      url: https://mapitest.cgtn.com/mobileapp
       path: /mapi/**
 
 spring:
@@ -17,6 +22,10 @@ spring:
       - "classpath:/templates/"
       - "file:templates/"
 
+security:
+  basic:
+    enabled: false
+
 
 ribbon:
   eureka:
@@ -25,3 +34,15 @@ ribbon:
 
 logging:
     config: classpath:logback.xml
+
+
+roles:
+  configs:
+    - path: "/css/**"
+      permitAll: true
+    - path: "/local/**"
+      roles:
+        - "role1"
+        - "role2"
+    - path: "/mapi/**"
+      roles: "role2"

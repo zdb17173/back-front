@@ -8,7 +8,6 @@
     <artifactId>back-front</artifactId>
     <version>1.0</version>
     <modules>
-        <module>front</module>
         <module>back-springboot</module>
         <module>front-springboot</module>
     </modules>
@@ -33,17 +32,19 @@
     <dependencyManagement>
         <dependencies>
 
-            <!--fasterxml for log4j2 JSONLayout-->
+            <!--fasterxml -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
                 <version>${com.fasterxml.jason.core.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${com.fasterxml.jason.core.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>

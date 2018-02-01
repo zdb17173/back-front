@@ -1,7 +1,10 @@
 package org.fran.back.springboot.config;
 
 import org.fran.back.springboot.config.cors.UrlBasedCorsConfiguration;
+import org.fran.back.springboot.security.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -12,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.DispatcherType;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,6 +24,17 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 
     @Autowired
     private UrlBasedCorsConfiguration urlBasedCorsConfiguration;
+    @Autowired
+    private UserService userService;
+
+    @Bean
+    public FilterRegistrationBean filterRegistration() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setDispatcherTypes(DispatcherType.REQUEST);
+        registration.setFilter(new LoginUserFilter(userService));
+
+        return registration;
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

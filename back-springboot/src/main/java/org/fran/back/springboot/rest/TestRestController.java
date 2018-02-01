@@ -9,10 +9,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.fran.back.springboot.security.UserService;
 import org.fran.back.springboot.vo.JsonResult;
 import org.fran.back.springboot.vo.RemoveConfigParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +23,22 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping("/api/test")
 public class TestRestController {
-
+	@Autowired
+	private UserService userService;
 	static Logger log = LoggerFactory.getLogger(TestRestController.class);
+
+	@GetMapping(value = "/checkLogin", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.ALL_VALUE)
+	public JsonResult<String> checkLogin(){
+
+		UserService.CustomUser user = userService.getCurUser();
+
+		JsonResult<String> res = new JsonResult<>();
+		res.setData(user == null ? "none user" : "hello: " + user.getUsername() + "!!");
+		res.setDescription("sahdjhsajdhjsahdjsajdjh");
+		res.setStatus(200);
+		return res;
+	}
+
 
 	@PostMapping(value = "/selectString", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public JsonResult<String> firstTest(@RequestBody RemoveConfigParam baseParam){
