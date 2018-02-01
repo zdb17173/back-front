@@ -1,0 +1,33 @@
+
+<script src="js/jquery-1.11.1.min.js"></script>
+
+
+<script>
+
+function a(){
+
+$.ajax({
+    type: "GET",
+	url: "http://127.0.0.1:8081/local/selectList?id=5" ,
+    contentType: "application/json",
+    success:function (data) {
+        console.log(data);
+        alert(JSON.stringify(data));
+        $("#txt").innerHTML = JSON.stringify(data);
+    },
+    error:function (data) {
+        alert(data.statusText);
+        console.log('Error: %o',data);
+    }
+});
+}
+
+a();
+
+</script>
+
+<html>
+    <body>
+        <h4 id="txt">test page</h4>
+    </body>
+</html>
