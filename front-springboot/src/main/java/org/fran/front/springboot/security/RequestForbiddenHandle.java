@@ -36,6 +36,7 @@ public class RequestForbiddenHandle extends LoginUrlAuthenticationEntryPoint {
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
 
         if("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))
+                || "XMLHttpRequest".equals(request.getHeader("x-requested-with"))
                 || "true".equalsIgnoreCase(request.getParameter("isAjaxRequest"))){
             response.setCharacterEncoding("UTF-8");
 
