@@ -35,3 +35,44 @@ spring:
       - "file:templates/"
 
 ```
+
+
+# 配置与限制
+
+文件上传超时限制
+
+文件大小限制
+
+文件乱码使用/zuul前缀，强制使用zuul servlet解决。
+
+```
+spring:
+  http:
+    multipart:
+      max-file-size: 5000Mb
+      max-request-size: 10Mb
+
+
+zuul:
+  #addHostHeader: true
+  ignoredHeaders:
+  sensitiveHeaders:
+  routes:
+    back:
+      url: http://127.0.0.1:8080/
+      path: /back/**
+    upload:
+      url: http://127.0.0.1:8080/
+      #upload file name garbled
+      #https://github.com/spring-cloud/spring-cloud-netflix/issues/1385
+      #file upload is supported better through the zuul servlet directly rather than the spring mvc controller.
+      #Prefix your uploads with /zuul and try.
+      #
+      #client upload use /zuul/upload/** to upload
+      path: /upload/**
+  host:
+    #api invoke timeout setting
+    socket-timeout-millis: 20000
+    connect-timeout-millis: 20000
+
+```

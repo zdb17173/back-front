@@ -1,7 +1,8 @@
 server:
   port: 8081
   session:
-    timeout: 1
+    #seconds
+    timeout: 6000
 
 zuul:
   #addHostHeader: true
@@ -14,8 +15,26 @@ zuul:
     mapi:
       url: https://mapitest.cgtn.com/mobileapp
       path: /mapi/**
+    upload:
+      url: http://127.0.0.1:8080/
+      #upload file name garbled
+      #https://github.com/spring-cloud/spring-cloud-netflix/issues/1385
+      #file upload is supported better through the zuul servlet directly rather than the spring mvc controller.
+      #Prefix your uploads with /zuul and try.
+      #
+      #client upload use /zuul/upload/** to upload
+      path: /upload/**
+  host:
+    #api invoke timeout setting
+    socket-timeout-millis: 20000
+    connect-timeout-millis: 20000
 
 spring:
+  http:
+    # file upload request size limit
+    multipart:
+      max-file-size: 5000Mb
+      max-request-size: 5000Mb
   freemarker:
     cache: false
     templateLoaderPath:
@@ -24,7 +43,7 @@ spring:
 
 security:
   basic:
-    enabled: false
+    enabled: true
 
 
 ribbon:
