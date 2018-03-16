@@ -76,3 +76,14 @@ zuul:
     connect-timeout-millis: 20000
 
 ```
+
+
+# 返回的页面iframe嵌入异常
+
+由于zuul会添加一些安全头，引起iframe嵌入异常
+```
+ignoredHeaders: "X-Frame-Options"
+
+```
+
+
