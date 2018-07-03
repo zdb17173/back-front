@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.fran.back.springboot.config.aspect.LogAction;
 import org.fran.back.springboot.security.UserService;
 import org.fran.back.springboot.vo.JsonResult;
 import org.fran.back.springboot.vo.RemoveConfigParam;
@@ -49,7 +50,8 @@ public class TestRestController {
 		res.setStatus(200);
 		return res;
 	}
-	
+
+	@LogAction(name ="selectList")
 	@GetMapping(value = "/selectList", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.ALL_VALUE)
 	public JsonResult<List<String>> selectTest(@RequestParam(name="id") int ids){
 		log.info("selectAll ids:["+ ids +"]");
