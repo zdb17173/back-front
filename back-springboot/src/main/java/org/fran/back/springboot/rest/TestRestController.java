@@ -10,6 +10,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.fran.back.springboot.config.aspect.LogAction;
+import org.fran.back.springboot.config.swagger.Swagger;
 import org.fran.back.springboot.security.UserService;
 import org.fran.back.springboot.vo.JsonResult;
 import org.fran.back.springboot.vo.RemoveConfigParam;
@@ -26,6 +27,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class TestRestController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private Swagger swagger;
+
 	static Logger log = LoggerFactory.getLogger(TestRestController.class);
 
 	@GetMapping(value = "/checkLogin", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.ALL_VALUE)
@@ -35,7 +39,7 @@ public class TestRestController {
 
 		JsonResult<String> res = new JsonResult<>();
 		res.setData(user == null ? "none user" : "hello: " + user.getUsername() + "!!");
-		res.setDescription("sahdjhsajdhjsahdjsajdjh");
+		res.setDescription(swagger.getHost() + "sahdjhsajdhjsahdjsajdjh");
 		res.setStatus(200);
 		return res;
 	}

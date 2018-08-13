@@ -4,6 +4,26 @@ server:
     #seconds
     timeout: 6000
 
+fran:
+  routes:
+    back:
+      url:
+        - "http://127.0.0.1:8080/"
+        - "http://127.0.0.1:8082/"
+        - "http://127.0.0.1:8083/"
+      path: /back/**
+      keepalive:
+        using: true
+        path: "keepalive/"
+        expectedContent: "true"
+    mapi:
+      url: https://mapitest.cgtn.com/mobileapp
+      path: /mapi/**
+    upload:
+      url: http://127.0.0.1:8080/
+      path: /upload/**
+
+
 zuul:
   #addHostHeader: true
   ignoredHeaders:

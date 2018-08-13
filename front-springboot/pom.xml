@@ -22,6 +22,12 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.fran.back-front</groupId>
+            <artifactId>ha</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>${org.springframework.boot.version}</version>

@@ -10,6 +10,7 @@
     <modules>
         <module>back-springboot</module>
         <module>front-springboot</module>
+        <module>ha</module>
     </modules>
 
     <packaging>pom</packaging>
