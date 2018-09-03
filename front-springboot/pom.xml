@@ -9,6 +9,7 @@
 
     <artifactId>front-springboot</artifactId>
     <packaging>jar</packaging>
+    <version>1.0</version>
 
     <name>front-springboot</name>
     <url>http://maven.apache.org</url>
@@ -52,46 +53,51 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <!--<resources>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-                <targetPath>${project.build.directory}/config</targetPath>
-                <includes>
-                    <include>*</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/src/main/resources/static</directory>
-                <targetPath>${project.build.directory}/static</targetPath>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>${project.basedir}/src/main/resources/templates</directory>
-                <targetPath>${project.build.directory}/templates</targetPath>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-            </resource>
-        </resources>-->
+    <profiles>
+        <profile>
+            <id>pack</id>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>${project.basedir}/src/main/resources</directory>
+                        <targetPath>${project.build.directory}/config</targetPath>
+                        <includes>
+                            <include>*</include>
+                        </includes>
+                    </resource>
+                    <resource>
+                        <directory>${project.basedir}/src/main/resources/static</directory>
+                        <targetPath>${project.build.directory}/static</targetPath>
+                        <includes>
+                            <include>**/*</include>
+                        </includes>
+                    </resource>
+                    <resource>
+                        <directory>${project.basedir}/src/main/resources/templates</directory>
+                        <targetPath>${project.build.directory}/templates</targetPath>
+                        <includes>
+                            <include>**/*</include>
+                        </includes>
+                    </resource>
+                </resources>
 
-        <!-- mvn package -->
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${org.springframework.boot.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
+                <!-- mvn package -->
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <version>${org.springframework.boot.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>repackage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

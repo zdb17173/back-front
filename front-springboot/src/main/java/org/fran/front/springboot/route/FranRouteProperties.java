@@ -18,6 +18,7 @@ import java.util.*;
 @ConfigurationProperties("fran")
 public class FranRouteProperties {
     Map<String, FranRoute> routes;
+    boolean enabled = false;
     static HAService haService;
     boolean inited = false;
 
@@ -29,9 +30,13 @@ public class FranRouteProperties {
         this.routes = routes;
     }
 
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @PostConstruct
     public void init() {
-        if(inited){
+        if(inited || !enabled){
             return;
         }else
             inited = true;

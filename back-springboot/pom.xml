@@ -9,6 +9,7 @@
 
     <artifactId>back-springboot</artifactId>
     <packaging>jar</packaging>
+    <version>1.0</version>
 
     <name>back-springboot</name>
     <url>http://maven.apache.org</url>

@@ -11,6 +11,7 @@
         <module>back-springboot</module>
         <module>front-springboot</module>
         <module>ha</module>
+        <module>cas</module>
     </modules>
 
     <packaging>pom</packaging>
